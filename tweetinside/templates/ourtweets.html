@@ -1,0 +1,61 @@
+<html>
+<head>
+	  <title>Inside Tweet</title>
+      <!--Import Google Icon Font-->
+      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="static/css/materialize.min.css"  media="screen,projection"/>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+<body>
+	<nav>
+    <div class="nav-wrapper indigo accent-2">
+      <form method="POST" action="/">
+        <div class="input-field">
+          <input id="search" type="search" name="qvar" required>
+          <label for="search"><i class="material-icons">search</i></label>
+          <i class="material-icons">close</i>
+        </div>
+      </form>
+    </div>
+  </nav>
+	<div class="container">
+	
+					<div>
+					<h1 class="center-align blue-text">searched for {{tag}}</h1>
+					</div>
+					<ul class="collection">  
+					{% for tweet in tweets%}  					
+					<li class="collection-item avatar">
+					<img src={{tweet.propic}} alt="" class="circle">
+					<span class="title">{{tweet.name}}</span>
+					<p>{{tweet.text}} <br>
+					</p>
+					<p class="secondary-content black-text">{{tweet.timestamp}}</p>
+					</li>
+					{% endfor %}
+					</ul>
+					<div class="col center-align">
+						<ul class="pagination">
+						{% if next and prev %}
+						<li class="waves-effect "><a href="{{prev_url}}"><i class="material-icons">chevron_left</i></a></li>
+						<li class="waves-effect"><a href="{{next_url}}"><i class="material-icons">chevron_right</i></a></li>
+						{% elif prev %}
+						<li class="waves-effect "><a href="{{prev_url}}"><i class="material-icons">chevron_left</i></a></li>
+						<li class="disabled "><a href="#"><i class="material-icons">chevron_right</i></a></li>
+						{% elif next%}
+						<li class="disabled"><a href="#"><i class="material-icons">chevron_left</i></a></li>
+						<li class="waves-effect"><a href="{{next_url}}"><i class="material-icons">chevron_right</i></a></li>
+						{% else %}
+						<li class="disabled"><a href="#"><i class="material-icons">chevron_left</i></a></li>
+						<li class="disabled "><a href="#"><i class="material-icons">chevron_right</i></a></li>
+						{% endif %}
+						</ul>
+					</div>
+    </div>
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="static/js/materialize.min.js"></script>
+</body>
+</html>

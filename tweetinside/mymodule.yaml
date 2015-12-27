@@ -1,0 +1,25 @@
+application: tweetinside
+module: mymodule
+version: 1
+runtime: python27
+api_version: 1
+threadsafe: yes
+instance_class: B2
+basic_scaling:
+  max_instances: 1
+  
+handlers:
+- url: /static
+  static_dir: static
+
+- url: /module/add
+  script: mymodule.app
+  login: admin
+  
+- url: /module/tweettask
+  script: mymodule.app
+  login: admin
+libraries:
+- name: webapp2
+  version: "2.5.2"
+  

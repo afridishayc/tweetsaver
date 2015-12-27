@@ -1,0 +1,6 @@
+dispatch:
+  - url: "tweetinside.appspot.com/"
+    module: default
+
+  - url: "*/module/*"
+    module: mymodule
